@@ -27,7 +27,6 @@ public class SettingsAcvtivity extends AppCompatActivity {
     private ListView listView;
     private ArrayList<Category> categoryList;
     private MyAdapter adapter;
-    private int coutChecked;
 
 
     @Override
@@ -37,13 +36,12 @@ public class SettingsAcvtivity extends AppCompatActivity {
 
         managerDB = new ManagerDB(this);
         listView = (ListView) findViewById(R.id.listViewSettings);
-        coutChecked = 0;
+
 
         loadData();
         setRadioButton();
         adapter = new MyAdapter(this,R.layout.element_settings,listCategorySettings);
         listView.setAdapter(adapter);
-        coutChecked = adapter.getCoutChecked();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -54,7 +52,6 @@ public class SettingsAcvtivity extends AppCompatActivity {
                 if(ctv.isChecked()){
                     tmp = listCategorySettings.get(position);
                     Toast.makeText(getApplicationContext(),"" + tmp.getName(),Toast.LENGTH_SHORT).show();
-                    coutChecked--;
                    tmp.setSelected(false);
                     ctv.setChecked(false);
                 }else{
@@ -62,7 +59,6 @@ public class SettingsAcvtivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"" + tmp.getName(),Toast.LENGTH_SHORT).show();
                     tmp.setSelected(true);
                     ctv.setChecked(true);
-                    coutChecked++;
                 }
             }
 
@@ -71,6 +67,7 @@ public class SettingsAcvtivity extends AppCompatActivity {
 
 
     }
+
 
 
     public void setRadioButton(){
@@ -103,19 +100,30 @@ public class SettingsAcvtivity extends AppCompatActivity {
     }
 
     public void onSaveSettings(View view) {
-        if(coutChecked>0){
+        ArrayList<Word> listTmp = null;
             try{
                 managerDB.updateSettingsCategory(listCategorySettings);
                 managerDB.updateSettingsRandom(setting);
-                Intent intent = new Intent(this,LearningActivity.class);
-                startActivity(intent);
+
+
+                listTmp = managerDB.loadAllWordsOfCategory();
+                if(listTmp==null || listTmp.isEmpty()) {
+                    for(Category w : listCategorySettings) {
+                        w.setSelected(true);
+                    }
+                    managerDB.updateSettingsCategory(listCategorySettings);
+                    Toast.makeText(getApplicationContext(),getString(R.string.must_check_category),Toast.LENGTH_LONG).show();
+                    adapter = new MyAdapter(this,R.layout.element_settings,listCategorySettings);
+                    listView.setAdapter(adapter);
+                }else {
+                    Intent intent = new Intent(this,LearningActivity.class);
+                    startActivity(intent);
+                }
+
+
             }catch (Exception e){
                 Toast.makeText(getApplicationContext(),"Uppss",Toast.LENGTH_SHORT).show();
             }
-        }else{
-            Toast.makeText(getApplicationContext(),getString(R.string.must_check_category),Toast.LENGTH_LONG).show();
-        }
-
     }
 
     @Override
