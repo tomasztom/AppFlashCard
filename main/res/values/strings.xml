@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">FLASHCARD</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="flashcard">Flashcard</string>
+    <string name="add_word">Dodaj słowo</string>
+    <string name="add_category">Dodaj kategorie</string>
+    <string name="add">Dodaj</string>
+    <string name="start_learning">Rozpocznij naukę</string>
+    <string name="enter_word">Wprowadź słowo</string>
+    <string name="dictionary">Słownik</string>
+    <string name="edit_word">Słówka</string>
+    <string name="edt_category">Kategorie</string>
+    <string name="search">Wyszukaj</string>
+    <string name="delete">Usuń</string>
+    <string name="save">Zapisz</string>
+    <string name="main_window">Okno główne</string>
+    <string name="title_activity_edit_category">EditCategoryActivity</string>
+    <string name="category">Kategoria :</string>
+    <string name="word">Słowo :</string>
+    <string name="enter_translation">PODAJ TŁUMACZENIE</string>
+    <string name="enter_name_category">Podaj nazwę</string>
+    <string name="learn">Nauka</string>
+    <string name="english">Język angielski</string>
+    <string name="general">ogólna</string>
+    <string name="translation">Tłumaczenie :</string>
+    <string name="next">Następne</string>
+    <string name="text_toast_1">Uzupełnij wszystkie pola.!</string>
+    <string name="text_toast_2">Upss... coś się zepsuło</string>
+    <string name="edit">Edycja</string>
+    <string name="adding">Dodawanie</string>
+    <string name="check">Sprawdź</string>
+    <string name="count_words">pozostałó</string>
+    <string name="show">Pokaż</string>
+    <string name="correct_answer"> poprawne odpowiedzi z rzędu</string>
+    <string name="end">Zakończ</string>
+    <string name="try_again">Spróbuj ponownie</string>
+    <string name="settings">USTAWIENIA</string>
+    <string name="random_words">Sposób losowania słów</string>
+    <string name="choice_category">Wybór kategorii :</string>
+    <string name="dont_find_word">Nie odnaleziono słowa</string>
+    <string name="category_exist">Podana kategoria już istnieje</string>
+    <string name="must_check_category">Chociaż jedna kategoria musi zostać zaznaczona!</string>
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.chmc.project.flascard.MainActivity"
+    style="@style/LinearyLayoutStyle.CenterGravity"
+    >
+
+
+
+    <Button
+        android:id="@+id/buttonDictionary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dictionary"
+        style="@style/ButtonStyle1"
+        android:onClick="onDictionaryClic"/>
+
+
+  <!--  <Button
+        android:id="@+id/buttonAddCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_category"
+        style="@style/ButtonStyle1"/> -->
+
+    <Button
+        android:id="@+id/buttonAddStartLearning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/start_learning"
+        android:onClick="onStartLearningClick"
+        style="@style/ButtonStyle1"/>
+
+
+
+</LinearLayout>

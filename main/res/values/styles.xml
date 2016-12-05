@@ -1,0 +1,100 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorWindowBackground</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+
+
+    <!-- MOJE STYLE -->
+
+
+    <style name="ButtonStyle1">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/buttonBackground</item>
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="ButtonStyle2">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:background">@color/buttonBackground</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="LinearyLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="LinearyLayoutStyle.WhiteBackground">
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingTop">40dp</item>
+    </style>
+
+    <style name="LinearyLayoutStyle.CenterGravityWhite">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@color/colorWhite</item>
+    </style>
+
+    <style name="LinearyLayoutStyle.CenterGravity">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TextViewStyle">
+        <item name="android:textSize">25sp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">5dp</item>
+        <item name="android:textColorHint">@color/buttonBackground</item>
+    </style>
+
+
+    <!-- koniec -->
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

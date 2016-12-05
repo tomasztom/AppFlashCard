@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.chmc.project.flascard.EditCategoryActivity"
+    style="@style/LinearyLayoutStyle.WhiteBackground">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        >
+
+        <EditText
+            android:id="@+id/editTextCategory"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/enter_name_category"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/add"
+            android:onClick="onAddCategoryClick"/>
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:gravity="center"-->
+        <!--android:paddingTop="20dp">-->
+
+
+        <!--<Button-->
+            <!--android:layout_width="170dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/save"-->
+            <!--/>-->
+
+        <!--<Button-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:layout_width="170dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/delete"-->
+            <!--android:enabled="false"/>-->
+    <!--</LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
+
+        <Spinner
+            android:id="@+id/spinnerCategoriesInEditCat"
+            android:paddingLeft="10dp"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            />
+
+        <Button
+            android:id="@+id/buttonDeleteCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/delete"
+            android:onClick="onDeleteCategoryClick"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="@string/start_learning"
+            android:background="@color/buttonBackground"
+            android:textColor="@color/colorWhite"
+            android:onClick="onLearning"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

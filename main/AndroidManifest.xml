@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.chmc.project.flascard">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/flashcard"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label=""
+            android:theme="@style/FullscreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/flashcard"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditWordActivity"
+            android:label="@string/edit_word"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DictionaryActivity"
+            android:label="@string/dictionary"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditCategoryActivity"
+            android:label="@string/edt_category"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LearningActivity"
+            android:label="@string/learn"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FinishActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".SettingsAcvtivity"
+            android:label="@string/settings"
+            android:screenOrientation="portrait"></activity>
+    </application>
+
+</manifest>
