@@ -306,7 +306,6 @@ public class ManagerDB extends SQLiteOpenHelper{
             default :
                 return null;
         }
-
     }
 
     public ArrayList<Category> getCategoriesSettings(){

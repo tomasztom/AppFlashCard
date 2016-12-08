@@ -79,7 +79,7 @@ public class LearningActivity extends AppCompatActivity {
 
     public void onCheckTranslationClick(View view) {
         Toast.makeText(getApplicationContext(),managerDraw.checkTranslation(loadWord()),Toast.LENGTH_SHORT).show();
-        setTextView(managerDraw.getWord());
+        setTextView(managerDraw.getCurrentWord());
     }
 
     // Funkcja zwraca nam słowo utworzone z wartości znajdujących się w polach TextView oraz EditText

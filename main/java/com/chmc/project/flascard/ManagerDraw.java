@@ -83,6 +83,7 @@ public class ManagerDraw {
                 }else{
                     countWords++;
                     correctAnswer=0;
+                    listWords.add(currentWord);
                     randomWord();
                     return "Niestety.! :(";              // oznacza ze tłumaczenie jest błędne
                 }
