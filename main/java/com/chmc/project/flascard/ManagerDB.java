@@ -122,14 +122,6 @@ public class ManagerDB extends SQLiteOpenHelper{
         return true;
     }
 
-//    public  getAllTranslations(){
-//        String query = "SELECT COUNT(*) FROM " + TABLE_TRANSLATIONS;
-//        Cursor cursor = databaseRead.rawQuery(query,null);
-//
-//        cursor.moveToNext();
-//        return cursor.getInt(0);
-//    }
-
 
     public void addWord(Word word){
         if(getIdWord(word)>0){                  // jezeli istnieje nic nie robimy
@@ -141,59 +133,6 @@ public class ManagerDB extends SQLiteOpenHelper{
         }
     }
 
-
-//    public ArrayList<Word> getTranslations(int idWord, String categoryName){
-//
-//        ArrayList<Word> list = new ArrayList<Word>();
-//
-//        String ss = "SELECT DISTINCT ww.id, ww."+COLUMN_WORD_NAME+ ", ww."+COLUMN_WORD_TYPE+
-//                " FROM "+TABLE_WORD+" as w, "+TABLE_CATEGORY+" as c, "+TABLE_WORD_CATEGORY+" as wc, "+TABLE_WORD+" as ww, "+TABLE_TRANSLATIONS+" as t, "+TABLE_TRANSLATIONS+" tt " +
-//                " WHERE" +
-//                " c."+COLUMN_CATEGORY_NAME+" = '" + categoryName + "'" +
-//                " AND c.id = wc."+COLUMN_ID_CATEGORY+
-//                " AND " + idWord +" = wc."+COLUMN_ID_WORD+
-//                " AND ((" + idWord +" = t."+COLUMN_ID_WORD +
-//                " AND t."+COLUMN_ID_TRANSLATION+" = ww.id)" +
-//                " OR (" + idWord +" = tt."+COLUMN_ID_TRANSLATION +
-//                " AND tt."+COLUMN_ID_WORD+" = " + idWord +"))";
-//
-//        Cursor cursor = databaseRead.rawQuery(ss,null);
-//
-//        while (cursor.moveToNext()){
-//            list.add(createWord(cursor));
-//        }
-//        return list;
-//    }
-
-
-//    public Word createWord(Cursor cursor){
-//        word = new Word();
-//        word.setId(cursor.getInt(0));
-//        word.setName(cursor.getString(1));
-//        if(cursor.getType(2)==0) word.setType(false);
-//        else word.setType(true);
-//        return word;
-//    }
-
-//    public ArrayList<Word> searchWord(String name){
-//        ArrayList<Word> list = new ArrayList<Word>();
-//        Cursor cursor;
-//
-//        String query = "SELECT DISTINCT w.id, w." + COLUMN_WORD_NAME + ", w." + COLUMN_WORD_TRANSLATION + ", c." + COLUMN_CATEGORY_NAME +
-//                " FROM " + TABLE_WORDS + " AS w, " + TABLE_CATEGORIES + " AS c, " + TABLE_WORD_CATEGORY + " AS t " +
-//                "WHERE w." + COLUMN_WORD_NAME + " = '" + name + "'" +
-//                " AND w.id = t." + COLUMN_ID_WORD +
-//                " AND t." + COLUMN_ID_CATEGORY + " = c.id";
-//
-//        cursor = databaseRead.rawQuery(query,null);
-//
-//        while (cursor.moveToNext()){
-//            list.add(
-//                    new Word(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3))
-//            );
-//        }
-//        return list;
-//    }
 
     public ArrayList<Word> searchWordWithoutCategory(String name){
         ArrayList<Word> list = new ArrayList<Word>();
@@ -238,8 +177,6 @@ public class ManagerDB extends SQLiteOpenHelper{
         values.put(COLUMN_ID_CATEGORY,idCategory);
         databaseWrite.insert(TABLE_WORD_CATEGORY,null,values);
     }
-
-
 
 
     // Metoda zwraca nam id categorii którą podaliśmy jako argument
@@ -298,24 +235,78 @@ public class ManagerDB extends SQLiteOpenHelper{
       //  databaseWrite.delete(TABLE_SETTINGS,COLUMN_ID_CATEGORY + "=?",args2);       // usuniecie ustawien z nia zwiazanych
     }
 
-    // Dodanie ukategori do ustawien
-    public void addSetting(int idCategory){
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_SETTING_ID,idCategory);
-        values.put(COLUMN_IS_CHECK,1);
-        databaseWrite.insertOrThrow(TABLE_SETTINGS,null,values);
-    }
 
-    public ArrayList<Word> loadAllWordsOfCategory(){
+
+    public ArrayList<Word> loadAllENWordsOfCategories(){
         ArrayList<Word> list = new ArrayList<Word>();
         Word word;
-        String query = "SELECT w.id, w." + COLUMN_WORD_NAME + ", w." + COLUMN_WORD_TRANSLATION + ", c." + COLUMN_CATEGORY_NAME +" FROM " +
+        String query = "";
+        query = "SELECT w.id, w." + COLUMN_WORD_TRANSLATION + ", w." + COLUMN_WORD_NAME + ", c." + COLUMN_CATEGORY_NAME +" FROM " +
                 TABLE_WORDS +" AS w , " +
                 TABLE_CATEGORIES + " AS c, "+
                 TABLE_WORD_CATEGORY + " AS wc " +
                 "WHERE c." + COLUMN_IS_CHECK + " = 1 " +
                 "AND wc." + COLUMN_ID_CATEGORY + " = c.id " +
                 "AND w.id = wc." + COLUMN_ID_WORD ;
+
+        Cursor cursor = databaseRead.rawQuery(query,null);
+
+        while(cursor.moveToNext()){
+            word = new PLWord(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3)
+            );
+            list.add(word);
+        }
+        return list;
+    }
+
+    public ArrayList<Word> loadAllPLWordsOfCategories(){
+        ArrayList<Word> list = new ArrayList<Word>();
+        Word word;
+        String query = "";
+        query = "SELECT w.id, w." + COLUMN_WORD_NAME + ", w." + COLUMN_WORD_TRANSLATION + ", c." + COLUMN_CATEGORY_NAME +" FROM " +
+                TABLE_WORDS +" AS w , " +
+                TABLE_CATEGORIES + " AS c, "+
+                TABLE_WORD_CATEGORY + " AS wc " +
+                "WHERE c." + COLUMN_IS_CHECK + " = 1 " +
+                "AND wc." + COLUMN_ID_CATEGORY + " = c.id " +
+                "AND w.id = wc." + COLUMN_ID_WORD ;
+
+        Cursor cursor = databaseRead.rawQuery(query,null);
+
+        while(cursor.moveToNext()){
+            word = new PLWord(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getString(3)
+            );
+            list.add(word);
+        }
+        return list;
+    }
+
+    public ArrayList<Word> loadAllWordsOfCategories(){
+        int settings = loadSettingsRandom();
+
+        ArrayList<Word> list = new ArrayList<Word>();
+        Word word;
+        String query = "";
+
+
+        switch(settings){
+            case 1:
+                 return loadAllPLWordsOfCategories();
+            case 0:
+                return loadAllENWordsOfCategories();
+            case -1:
+                list.addAll(loadAllENWordsOfCategories());
+                list.addAll(loadAllPLWordsOfCategories());
+                return list;
+        }
 
         Cursor cursor = databaseRead.rawQuery(query,null);
 

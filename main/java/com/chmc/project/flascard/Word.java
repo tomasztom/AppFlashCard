@@ -2,17 +2,18 @@ package com.chmc.project.flascard;
 
 import java.util.ArrayList;
 
-/**
- * Created by ola on 2016-12-02.
- */
+
 public class Word {
 
-    private int id;
-    private String name;
-    private String translation;
-    private String category;
-    //private ArrayList<Word> translations;
+    protected int id;
+    protected String name;
+    protected String translation;
+    protected String category;
+    protected final String URL="https://google.pl";
 
+    public String getURL(){
+        return URL;
+    }
 
     public  Word(){
         this(-1,null,null,null);

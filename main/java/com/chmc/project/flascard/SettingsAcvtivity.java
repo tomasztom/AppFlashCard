@@ -106,7 +106,7 @@ public class SettingsAcvtivity extends AppCompatActivity {
                 managerDB.updateSettingsRandom(setting);
 
 
-                listTmp = managerDB.loadAllWordsOfCategory();
+                listTmp = managerDB.loadAllWordsOfCategories();
                 if(listTmp==null || listTmp.isEmpty()) {
                     for(Category w : listCategorySettings) {
                         w.setSelected(true);
