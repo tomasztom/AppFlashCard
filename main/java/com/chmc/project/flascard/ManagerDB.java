@@ -293,9 +293,6 @@ public class ManagerDB extends SQLiteOpenHelper{
         int settings = loadSettingsRandom();
 
         ArrayList<Word> list = new ArrayList<Word>();
-        Word word;
-        String query = "";
-
 
         switch(settings){
             case 1:
@@ -306,21 +303,10 @@ public class ManagerDB extends SQLiteOpenHelper{
                 list.addAll(loadAllENWordsOfCategories());
                 list.addAll(loadAllPLWordsOfCategories());
                 return list;
+            default :
+                return null;
         }
 
-        Cursor cursor = databaseRead.rawQuery(query,null);
-
-        while(cursor.moveToNext()){
-            word = new Word(
-                    cursor.getInt(0),
-                    cursor.getString(1),
-                    cursor.getString(2),
-                    cursor.getString(3)
-            );
-
-            list.add(word);
-        }
-        return list;
     }
 
     public ArrayList<Category> getCategoriesSettings(){

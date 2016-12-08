@@ -17,11 +17,8 @@ import java.util.Random;
 
 public class LearningActivity extends AppCompatActivity {
 
-    private static String URL_EN = "https://translate.google.pl/m/translate#en/pl/";
-    private static String URL_PL = "https://translate.google.pl/m/translate#pl/en/";
     private ManagerDB managerDB;
     private ArrayList<Word> listWords;
-    private ArrayList<Word> tmpListWords;
     private TextView textViewCategory;
     private TextView textViewWord;
     private EditText editTextEnterTranslation;
@@ -29,12 +26,6 @@ public class LearningActivity extends AppCompatActivity {
     private TextView textViewCorrectAnswer;
     private boolean isWin, goSetting;
     private ManagerDraw managerDraw;
-
-    private int setting;        // ustawienia losowania słow
-    private int lang;           // zmienna odpowiadająca za informacje na temat czy zaczytane
-                                // słowo jest PL czy EN
-
-    private int correctAnswer;  // zmienna odpowiadajaca za liczbe poprawnych odpowiedzi z rzędu
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
